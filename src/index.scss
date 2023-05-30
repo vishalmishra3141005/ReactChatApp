@@ -25,6 +25,16 @@
 
   .searchbar {
     display: flex;
+    align-items: center;
+    position: relative;
+
+    img {
+      height: 20px;
+      position: absolute;
+      left: 5px;
+      color: grey;
+      cursor: pointer;
+    }
 
     .search {
       border: none;
@@ -32,7 +42,26 @@
       background-color: white;
       height: 35px;
       width: 100%;
-      padding: 10px;
+      padding: 10px 10px 10px 30px;
+    }
+  }
+
+  .add-conversation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    img {
+      height: 20px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 
@@ -61,12 +90,12 @@
         gap: 5px;
 
         .chat-heading {
-          font-size: 18px;
+          font-size: 15px;
           font-weight: 500;
         }
 
         .chat-content {
-          font-size: 15px;
+          font-size: 10px;
           font-weight: lighter;
         }
       }
@@ -100,7 +129,7 @@
 
 .message {
   background-color: #F0F8FF;
-  height: 85%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -146,5 +175,28 @@
 }
 
 .input-section {
+  width: 100%;
+  height: 11%;
+  padding: 10px;
+  display: flex;
 
+  textarea {
+    width: 80%;
+    height: 100%;
+    padding: 10px;
+    resize: none;
+    border: 1px solid grey;
+    outline: none;
+    border-radius: 10px;
+
+    &:focus {
+      border: 2px solid pink;
+    }
+  }
+
+  .send-button {
+    width: 5%;
+    height: 100%;
+
+  }
 }
