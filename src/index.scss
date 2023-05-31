@@ -95,7 +95,7 @@
         }
 
         .chat-content {
-          font-size: 10px;
+          font-size: 12px;
           font-weight: lighter;
         }
       }
@@ -179,6 +179,8 @@
   height: 11%;
   padding: 10px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   textarea {
     width: 80%;
@@ -197,6 +199,18 @@
   .send-button {
     width: 5%;
     height: 100%;
+    background-color: #00BFFF;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+
+    &:hover {
+      background-color: #4B9CD3;
+
+    }
+
 
   }
 }
