@@ -2,11 +2,11 @@
 import {contacts} from "../data/contacts.js";
 import {CurrentConvDispatchContext} from "../contexts/CurrentConvContext.js";
 import {LastMessagesContext, LastMessagesDispatchContext} from "../contexts/LastMessageContext.js";
-import {OpenChatsContext, OpenChatsDispatchContext} from "../contexts/OpenChatContext.js";
+import {OpenChatsContext} from "../contexts/OpenChatContext.js";
 
 import {useContext} from "react";
 
-export default function ContactList({displayList}) {
+export default function ContactList({displayList, setNewLast}) {
     const lastMessages = useContext(LastMessagesContext);
     const lastMessagesDispatch = useContext(LastMessagesDispatchContext);
 
@@ -16,19 +16,26 @@ export default function ContactList({displayList}) {
 
 
     const clickHandler = function(contact) {
-        displayList(false);
+
+        console.log(contact);
         let found = false;
+
         for (let lastMessage of lastMessages) {
             if (lastMessage.id === contact.id) {
                 found = true;
             }
         }
+
+
         if (!found) {
             lastMessagesDispatch({type: "new", message: {
                     ...contact,
                     "lastMessage": "",
                 },
-            })
+            });
+            const message = { ...contact, "lastMessage": ""}
+            setNewLast([...lastMessages, message]);
+
         }
 
         for (const openChat of openChats) {
@@ -37,6 +44,7 @@ export default function ContactList({displayList}) {
                 break;
             }
         }
+        displayList(false);
 
     }
 

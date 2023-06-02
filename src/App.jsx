@@ -13,6 +13,8 @@ import {CurrentConv, CurrentConvDispatchContext} from "./contexts/CurrentConvCon
 
 function lastMessageReducer(lastMessages, action) {
     if (action.type === "new") {
+        console.log("new last message......");
+        console.log(action.message);
         return [
             ...lastMessages,
             action.message,
@@ -25,6 +27,7 @@ function lastMessageReducer(lastMessages, action) {
                 break;
             }
         }
+        console.log(`new last message: ${newLastMessages}`);
         return newLastMessages;
     }
 
