@@ -1,9 +1,9 @@
 
-export default function Navbar() {
+export default function Navbar({ name, avatar}) {
     return (
         <div className="navbar">
-            <img src="https://100k-faces.glitch.me/random-image" alt="avatar" />
-            <span>Name</span>
+            <img src={avatar} alt="avatar" />
+            <span>{name}</span>
         </div>
     );
 

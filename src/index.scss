@@ -9,6 +9,7 @@
   display: flex;
   height: 100vh;
   width: 100vw;
+  position: relative;
 }
 
 .conversations {
@@ -22,7 +23,6 @@
   overflow-y: auto;
 
   gap: 10px;
-
   .searchbar {
     display: flex;
     align-items: center;
@@ -58,6 +58,7 @@
 
     img {
       height: 20px;
+      object-fit: cover;
 
       &:hover {
         cursor: pointer;
@@ -124,6 +125,7 @@
   img {
     height: 40px;
     border-radius: 50%;
+    object-fit: cover;
   }
 }
 
@@ -212,5 +214,60 @@
     }
 
 
+  }
+}
+
+.empty {
+  width: 100%;
+  background-color: #F0F0F0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-list {
+  position: absolute;
+  top: 125px;
+  left: 500px;
+  height: 300px;
+  width: 300px;
+  background-color: #DBE9F4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  overflow-y: auto;
+  border-radius: 10px;
+
+  h4 {
+    width: 100%;
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
+  }
+
+  .ind-contact {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+
+    img {
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    span {
+      font-size: 20px;
+    }
+
+    &:hover {
+      background-color: pink;
+    }
   }
 }

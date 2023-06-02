@@ -1,11 +1,29 @@
 
-export default function Chat() {
+// import {openChat} from "../data/openchat.js";
+import {useContext} from "react";
+import {OpenChatsContext} from "../contexts/OpenChatContext.js";
+import {CurrentConvDispatchContext} from "../contexts/CurrentConvContext.js"
+
+export default function Chat({name, avatar, message, contactId}) {
+
+    const openChat = useContext(OpenChatsContext);
+    const currConvDispatch = useContext(CurrentConvDispatchContext);
+
+    const clickHandler = function(e) {
+        for (let chat of openChat) {
+            if (chat.id === contactId) {
+                currConvDispatch({type: "new", new_chat: {...chat}});
+                break;
+            }
+        }
+    }
+
     return (
-        <div className="chat">
-            <img className="chat-img" src="https://100k-faces.glitch.me/random-image" alt="avatar" />
+        <div onClick={clickHandler} className="chat">
+            <img className="chat-img" src={avatar} alt="avatar" />
             <div className="chat-info">
-                <span className="chat-heading">Name</span>
-                <span className="chat-content">Message</span>
+                <span className="chat-heading">{name}</span>
+                <span className="chat-content">{message}</span>
             </div>
         </div>
     );
