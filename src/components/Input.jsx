@@ -17,6 +17,8 @@ export default function Input() {
     const lastMessagesDispatch = useContext(LastMessagesDispatchContext);
 
     const sendButtonHandler = function(e) {
+        if (currMessage.length === 0)
+            return;
         let newChat = {...currConv};
         let last = 0;
         if (newChat.messages.length !== 0)

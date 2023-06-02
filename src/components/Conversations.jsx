@@ -12,17 +12,29 @@ export default function Conversations() {
     const [displayContactList, setDisplayContactList] = useState(false);
 
     const lastMessage = useContext(LastMessagesContext);
-    console.log(lastMessage);
+    const [newLastMessage, setNewLastMessage] = useState([...lastMessage]);
+    const [searchTerm, setSearchTerm] = useState('');
+
     const addConversationHandler = function(e) {
         setDisplayContactList(true);
+    }
+
+    const searchClickHandler = function(e) {
+        let tempNew = []
+        for (let lastM of lastMessage) {
+            if (lastM.name.startsWith(searchTerm)) {
+                tempNew.push(lastM);
+            }
+        }
+        setNewLastMessage(tempNew);
     }
 
     return (
         <div className="conversations">
 
             <div className="searchbar">
-                <img src={SearchIcon} alt="search-icon" />
-                <input className="search" type="text" placeholder="Search for conversation"/>
+                <img onClick={searchClickHandler} src={SearchIcon} alt="search-icon" />
+                <input onChange={(e) => setSearchTerm(e.target.value)} className="search" type="text" placeholder="Search for conversation"/>
             </div>
             <div className="add-conversation">
                 <span>CONVERSATIONS</span>
@@ -30,7 +42,7 @@ export default function Conversations() {
                 {displayContactList && <ContactList displayList={setDisplayContactList}/> }
             </div>
             <div className="chatlist">
-                { lastMessage.map((message) => {
+                { newLastMessage.map((message) => {
                     return <Chat
                         key={message.id}
                         name={message.name}

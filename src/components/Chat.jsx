@@ -23,7 +23,7 @@ export default function Chat({name, avatar, message, contactId}) {
             <img className="chat-img" src={avatar} alt="avatar" />
             <div className="chat-info">
                 <span className="chat-heading">{name}</span>
-                <span className="chat-content">{message}</span>
+                <span className="chat-content">{message.length > 15 ? message.substr(0, 15).concat('...') : message}</span>
             </div>
         </div>
     );
