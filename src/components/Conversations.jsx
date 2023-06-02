@@ -5,7 +5,7 @@ import SearchIcon from "../assets/magnifying-glass-solid.svg";
 import ContactList from "./ContactList.jsx";
 
 import { LastMessagesContext } from "../contexts/LastMessageContext.js"
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 
 export default function Conversations() {
     // const [newContact, setNewContact] = useState(null);
@@ -14,10 +14,14 @@ export default function Conversations() {
     const lastMessage = useContext(LastMessagesContext);
 
     const [newLastMessage, setNewLastMessage] = useState(lastMessage);
+
     const [searchTerm, setSearchTerm] = useState('');
 
-    // console.log(lastMessage);
-    // console.log(newLastMessage);
+    useEffect(() => {
+        setNewLastMessage(lastMessage);
+    }, [lastMessage]);
+
+    console.log(lastMessage);
 
     const addConversationHandler = function(e) {
         setDisplayContactList(true);
@@ -33,6 +37,8 @@ export default function Conversations() {
         setNewLastMessage(tempNew);
     }
 
+
+
     const searchHandler = function(e) {
         setSearchTerm(e.target.value);
         const st = e.target.value;
@@ -46,6 +52,7 @@ export default function Conversations() {
         setNewLastMessage(tempNew);
 
     }
+
 
     return (
         <div className="conversations">

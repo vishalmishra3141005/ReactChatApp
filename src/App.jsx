@@ -13,21 +13,22 @@ import {CurrentConv, CurrentConvDispatchContext} from "./contexts/CurrentConvCon
 
 function lastMessageReducer(lastMessages, action) {
     if (action.type === "new") {
-        console.log("new last message......");
-        console.log(action.message);
+        // console.log("new last message......");
+        // console.log(action.message);
         return [
             ...lastMessages,
             action.message,
         ];
     } else if (action.type === "change") {
         const newLastMessages = [...lastMessages];
+        // console.log(action.id);
+        // console.log(action.lastMessage);
         for (let newLastMessage of newLastMessages) {
             if (newLastMessage.id === action.id) {
                 newLastMessage.lastMessage = action.lastMessage;
                 break;
             }
         }
-        console.log(`new last message: ${newLastMessages}`);
         return newLastMessages;
     }
 
@@ -53,6 +54,7 @@ export default function App() {
     const [lastMessages, lastMessagesDispatch] = useReducer(lastMessageReducer, lastMessage);
     const [openChats, openChatsDispatch] = useReducer(openChatReducer, openChat);
     const [currConv, currConvDispatch] = useReducer(currConvReducer, null);
+
 
     return (
       <>

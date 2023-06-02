@@ -17,7 +17,7 @@ export default function ContactList({displayList, setNewLast}) {
 
     const clickHandler = function(contact) {
 
-        console.log(contact);
+        // console.log(contact);
         let found = false;
 
         for (let lastMessage of lastMessages) {
@@ -25,6 +25,7 @@ export default function ContactList({displayList, setNewLast}) {
                 found = true;
             }
         }
+
 
 
         if (!found) {
@@ -35,7 +36,6 @@ export default function ContactList({displayList, setNewLast}) {
             });
             const message = { ...contact, "lastMessage": ""}
             setNewLast([...lastMessages, message]);
-
         }
 
         for (const openChat of openChats) {
